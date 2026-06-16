@@ -1,0 +1,10 @@
+Componentes do projeto:
+-1 Arduíno UNO R3;
+-1 Placa de Ensaio Pequena (Breadboard Small);
+-5 LEDs;
+-5 Resistores de 330 ohms (para os LEDs);
+-1 Resistor de 100 ohms (para o Buzzer);
+-1 Resistor de 1 kiloohm (para o Botão);
+-1 Piezo Buzzer;
+-1 Botão (Pushbutton);
+-16 cabos jumpers;
