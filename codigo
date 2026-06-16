@@ -1,0 +1,58 @@
+int botaoModo = 0;
+
+int tempo = 0;
+
+int botao=7;
+int redVeiculos=8;
+int yellowVeiculos=9;
+int greenVeiculos=10;
+int redPedestres=11;
+int greenPedestres=12;
+int buzzer=13;
+
+void setup()
+{
+  pinMode(buzzer, OUTPUT);//buzzer
+  pinMode(greenVeiculos, OUTPUT);//verde veículos
+  pinMode(yellowVeiculos, OUTPUT);//amarelo veículos
+  pinMode(redVeiculos, OUTPUT);//vermelho veículos
+  pinMode(greenPedestres, OUTPUT);//verde pedestres
+  pinMode(redPedesres, OUTPUT);//vermelho pedestres
+  pinMode(botao, INPUT);//botão
+
+  botaoModo = 0;//solicitação de travessia
+}
+
+void loop()
+{
+  noTone(13);
+  digitalWrite(greenVeiculos, HIGH);
+  digitalWrite(redPedestres, HIGH);
+  tempo = 0;
+  while (tempo < 13) {
+    if (digitalRead(botao) == HIGH) {
+      botaoModo = 1;
+      delay(1000);
+      break;
+    }
+    delay(1000); 
+    tempo = (tempo + 1);
+  }
+  if (botaoModo == 1 || tempo >= 13) {
+    
+    digitalWrite(greenVeiculos, LOW);
+    delay(1000); 
+    digitalWrite(yellowVeiculos, HIGH);
+    delay(2000); 
+    digitalWrite(redPedestres, LOW);
+    digitalWrite(yellowVeiculos, LOW);
+    tone(13, 523, 8000); 
+    digitalWrite(redVeiculos, HIGH);
+    digitalWrite(greenPedestres, HIGH);
+    delay(8000); 
+    digitalWrite(redVeiculos, LOW);
+    digitalWrite(greenPedestres, LOW);
+    botaoModo = 0;
+    tempo = 0;
+  }
+}
